@@ -1,5 +1,15 @@
+bsc\example\objective\model\Payment.class
+bsc\example\Currency.class
+bsc\example\objective\model\BankAccount.class
 bsc\example\BankAccount.class
 bsc\example\CurrencyExchange.class
-bsc\example\Currency.class
+bsc\example\objective\Main$1.class
+bsc\example\objective\service\BankAccountServiceImpl.class
+bsc\example\objective\service\InputProcessorServiceImpl.class
 bsc\example\InputProcessor.class
+bsc\example\objective\service\InputProcessorService.class
+bsc\example\objective\service\OutputProcessorServiceImpl.class
+bsc\example\objective\Main.class
+bsc\example\objective\service\OutputProcessorService.class
+bsc\example\objective\service\BankAccountService.class
 bsc\example\Main.class
