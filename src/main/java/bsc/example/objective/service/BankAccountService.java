@@ -1,13 +1,25 @@
 package bsc.example.objective.service;
 
-import bsc.example.objective.model.Payment;
-
 import java.math.BigDecimal;
-import java.util.Currency;
-import java.util.Map;
 
+
+/**
+ * Service for working with bank account
+ *
+ * @link BankAccount
+ *
+ * @author Yahor
+ */
 public interface BankAccountService {
 
-    Map<Currency, Payment> getBankAccount();
-    void transaction(String inputCurrency, BigDecimal amount);
+    /**
+     * Method implements logic of payment addition. All parameters are pre-validated.
+     *
+     * @param paymentCurrency is String which denotes payment currency
+     * @param amount is a BigDecimal payment value
+     * @return
+     */
+    boolean addPayment(String paymentCurrency, BigDecimal amount);
+
+    void printBalance();
 }

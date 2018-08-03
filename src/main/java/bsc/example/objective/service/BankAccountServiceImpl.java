@@ -1,48 +1,53 @@
 package bsc.example.objective.service;
 
+import bsc.example.objective.repo.AccountRepo;
 import bsc.example.objective.model.Payment;
-import bsc.example.objective.model.BankAccount;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Currency;
-
 import java.util.Map;
 
-/**
- * Contains useful methods for working with  user's bank account which contains multiple currency accounts.
- *
- * @author Yahor
- */
-public class BankAccountServiceImpl implements BankAccountService {
+public class BankAccountServiceImpl implements BankAccountService{
 
-    private BankAccount bankAccount;
+    private AccountRepo accountRepo;
 
-    public BankAccountServiceImpl() {
-        bankAccount = new BankAccount();
+    public BankAccountServiceImpl(AccountRepo accountRepo) {
+        this.accountRepo = accountRepo;
     }
 
     @Override
-    public Map<Currency, Payment> getBankAccount() {
-        return bankAccount.getAccounts();
-    }
+    public boolean addPayment(String paymentCurrency, BigDecimal amount){
+        boolean paymentSuccessful = false;
+        Currency currency = Currency.getInstance(paymentCurrency);
+        Map<Currency, Payment> userAccounts = accountRepo.getBankAccount().getAccounts();
 
-    public void transaction(String inputCurrency, BigDecimal amount){
-        Currency currency = Currency.getInstance(inputCurrency);
-
-        Payment actualPayment = getBankAccount().get(currency);
+        Payment actualPayment = userAccounts.get(currency);
 
         if(actualPayment != null){
             BigDecimal newPaymentAmount = actualPayment.getAmount().add(amount);
 
             if(newPaymentAmount.compareTo(BigDecimal.ZERO) < 0){
                 System.out.println("Exception the payment substracts more than actual money available");
+
             } else {
-                getBankAccount().put(currency, new Payment(currency, newPaymentAmount));
+                userAccounts.put(currency, new Payment(currency, newPaymentAmount));
+                paymentSuccessful = true;
             }
 
         } else {
-            getBankAccount().put(currency, new Payment(currency, amount));
+            userAccounts.put(currency, new Payment(currency, amount));
+            paymentSuccessful = true;
         }
 
+        return paymentSuccessful;
     }
+
+    @Override
+    public void printBalance() {
+        Collection<Payment> myAccount = accountRepo.getBankAccount().getAccounts().values();
+        myAccount.stream().filter(x -> !x.getAmount().equals(BigDecimal.ZERO)).forEach(System.out::println);
+    }
+
+
 }

@@ -12,21 +12,30 @@ import static org.junit.Assert.assertTrue;
  */
 public class ValidationTest {
     InputProcessorServiceImpl inputProcessorService;
+    String lineValid;
+    String lineInvalid1;
+    String lineInvalid2;
 
     @Before
     public void init(){
         inputProcessorService = new InputProcessorServiceImpl(null);
+        lineValid = "USD -100.15";
+        lineInvalid1 = "ABC 100.15";
+        lineInvalid2 = "USd 100,15";
     }
 
     @Test
     public void validationTest(){
-        String lineValid = "USD -100.15";
-        String lineInvalid1 = "ABC 100,15";
-        String lineInvalid2 = "USd 100.15";
-
         assertTrue(inputProcessorService.isValid(lineValid));
-        assertFalse(inputProcessorService.isValid(lineInvalid1));
-        assertFalse(inputProcessorService.isValid(lineInvalid2));
+    }
 
+    @Test
+    public void nonExistingCurrency(){
+        assertFalse(inputProcessorService.isValid(lineInvalid1));
+    }
+
+    @Test
+    public void invalidCurrency(){
+        assertFalse(inputProcessorService.isValid(lineInvalid2));
     }
 }
