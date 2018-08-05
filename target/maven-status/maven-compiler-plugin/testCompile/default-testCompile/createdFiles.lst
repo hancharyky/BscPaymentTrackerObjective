@@ -1,3 +1,3 @@
-bsc\example\TransactionTest.class
+bsc\example\BankServiceTest.class
 bsc\example\ValidationTest.class
-bsc\example\AppTest.class
+bsc\example\BankAccountRepoTest.class

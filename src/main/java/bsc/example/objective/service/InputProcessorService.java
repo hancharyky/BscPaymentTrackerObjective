@@ -27,12 +27,6 @@ public interface InputProcessorService {
      */
     void processInput(FileReader fileReader) throws IOException;
 
-    /**
-     * Accepts separate line of input and checks if it valid input for processing.
-     *
-     * @param line is a string representation of a payment
-     * @return
-     */
-    boolean isValid(String line);
+
 }
 

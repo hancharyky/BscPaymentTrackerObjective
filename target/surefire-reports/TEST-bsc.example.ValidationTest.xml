@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="bsc.example.ValidationTest" time="0.001" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="bsc.example.ValidationTest" time="0" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -7,7 +7,7 @@
     <property name="java.specification.version" value="1.8"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\Yahor\Desktop\BscPaymentTrackerObjective\target\test-classes;C:\Users\Yahor\Desktop\BscPaymentTrackerObjective\target\classes;C:\Users\Yahor\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Yahor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\Yahor\Desktop\BscPaymentTrackerObjective\target\test-classes;C:\Users\Yahor\Desktop\BscPaymentTrackerObjective\target\classes;C:\Users\Yahor\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Yahor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Yahor\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -18,8 +18,8 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\Yahor\AppData\Local\Temp\surefire2924684167817327450\surefirebooter548292448360736436.jar C:\Users\Yahor\AppData\Local\Temp\surefire2924684167817327450 2018-08-02T12-31-17_123-jvmRun1 surefire5535119664751185705tmp surefire_09134256468214998289tmp"/>
-    <property name="surefire.test.class.path" value="C:\Users\Yahor\Desktop\BscPaymentTrackerObjective\target\test-classes;C:\Users\Yahor\Desktop\BscPaymentTrackerObjective\target\classes;C:\Users\Yahor\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Yahor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="sun.java.command" value="C:\Users\Yahor\AppData\Local\Temp\surefire3198649516091034943\surefirebooter4853239898724599550.jar C:\Users\Yahor\AppData\Local\Temp\surefire3198649516091034943 2018-08-05T10-38-00_317-jvmRun1 surefire7231374956633571079tmp surefire_04601791824125217106tmp"/>
+    <property name="surefire.test.class.path" value="C:\Users\Yahor\Desktop\BscPaymentTrackerObjective\target\test-classes;C:\Users\Yahor\Desktop\BscPaymentTrackerObjective\target\classes;C:\Users\Yahor\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Yahor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Yahor\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Yahor"/>
     <property name="user.language" value="en"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\Yahor\AppData\Local\Temp\surefire2924684167817327450\surefirebooter548292448360736436.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Yahor\AppData\Local\Temp\surefire3198649516091034943\surefirebooter4853239898724599550.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_131\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -53,7 +53,7 @@
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Intel\iCLS Client\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Java\jdk1.8.0_121\bin;C:\Program Files\PuTTY\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Maven\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\OpenSSH\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH\;C:\Users\Yahor\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Maven\bin;C:\Users\Yahor\AppData\Roaming\npm;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Users\Yahor\AppData\Roaming\Dashlane\4.8.8.36676\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Yahor\AppData\Roaming\Dashlane\4.8.8.36676\ucrt;C:\Users\Yahor\AppData\Local\atom\bin;C:\Users\Yahor\AppData\Local\Microsoft\WindowsApps;C:\Users\Yahor\Desktop\Spring Environment\OpenSSL\bin;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\ucrt;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\bin\Qt;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\ucrt;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\bin\Ssl;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Intel\iCLS Client\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Java\jdk1.8.0_121\bin;C:\Program Files\PuTTY\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Maven\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\OpenSSH\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH\;C:\Users\Yahor\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Maven\bin;C:\Users\Yahor\AppData\Roaming\npm;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Users\Yahor\AppData\Roaming\Dashlane\4.8.8.36676\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Yahor\AppData\Roaming\Dashlane\4.8.8.36676\ucrt;C:\Users\Yahor\AppData\Local\atom\bin;C:\Users\Yahor\AppData\Local\Microsoft\WindowsApps;C:\Users\Yahor\Desktop\Spring Environment\OpenSSL\bin;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\ucrt;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\bin\Qt;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\ucrt;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.2.11187\bin\Ssl;C:\Users\Yahor\AppData\Local\GitHubDesktop\bin;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.3.11395\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.3.11395\ucrt;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.3.11395\bin\Qt;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.3.11395\ucrt;C:\Users\Yahor\AppData\Roaming\Dashlane\6.0.3.11395\bin\Ssl;."/>
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="25.131-b11"/>
@@ -61,5 +61,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
+  <testcase name="invalidCurrency" classname="bsc.example.ValidationTest" time="0"/>
   <testcase name="validationTest" classname="bsc.example.ValidationTest" time="0"/>
+  <testcase name="nonExistingCurrency" classname="bsc.example.ValidationTest" time="0"/>
 </testsuite>
