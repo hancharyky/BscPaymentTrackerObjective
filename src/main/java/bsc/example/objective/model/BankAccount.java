@@ -17,6 +17,7 @@ public class BankAccount {
         this.accounts = new HashMap<>();
     }
 
+
     public Map<Currency, Payment> getAccounts() {
         return accounts;
     }

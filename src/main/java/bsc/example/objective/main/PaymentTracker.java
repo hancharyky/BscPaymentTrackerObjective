@@ -1,5 +1,6 @@
 package bsc.example.objective.main;
 
+import bsc.example.objective.exception.InvalidInputException;
 import bsc.example.objective.repo.AccountRepo;
 import bsc.example.objective.service.BankAccountServiceImpl;
 import bsc.example.objective.service.InputProcessorServiceImpl;
@@ -21,7 +22,7 @@ public class PaymentTracker {
     BankAccountServiceImpl bankAccountService;
     InputProcessorServiceImpl inputProcessorService;
 
-    String filename = "payments.txt";
+    String filename = "paymentss.txt";
 
     public PaymentTracker() {
         this.accountRepo = new AccountRepo();
@@ -32,14 +33,20 @@ public class PaymentTracker {
     public void init(){
         try {
             inputProcessorService.processInput(new FileReader(filename));
-        } catch (FileNotFoundException e) {
+        } catch (InvalidInputException | FileNotFoundException e) {
+            log.error("File " + filename + " is erroneous or doesn't exist", e);
             System.out.println("There is a problem with input file please contact customer service.");
-            log.error(e);
+            System.exit(-1);
         }
+
         outputAccount();
             System.out.println("Welcome to you payment tracker program! To exit, enter \"quit\"\n" +
                     "If you want to proceed, please, enter payment currency code and amount:");
+        try {
             inputProcessorService.processInput(new InputStreamReader(System.in));
+        } catch (InvalidInputException e) {
+            log.error("User input " + System.in + " is erroneous", e);
+        }
     }
 
     private void outputAccount(){

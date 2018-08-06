@@ -1,5 +1,7 @@
 package bsc.example.objective.service;
 
+import bsc.example.objective.exception.InvalidInputException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,17 +17,15 @@ public interface InputProcessorService {
      * Method processes and persist user console input
      *
      * @param consoleReader is a console input to be processed
-     * @throws IOException
      */
-    void processInput(InputStreamReader consoleReader) throws IOException;
+    void processInput(InputStreamReader consoleReader) throws InvalidInputException;
 
     /**
      * Method processes and persist user file input
      *
      * @param fileReader are payments in a file form
-     * @throws IOException
      */
-    void processInput(FileReader fileReader) throws IOException;
+    void processInput(FileReader fileReader) throws InvalidInputException;
 
 
 }

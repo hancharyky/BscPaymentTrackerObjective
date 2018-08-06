@@ -1,6 +1,7 @@
 package bsc.example.objective.service;
 
 
+import bsc.example.objective.exception.InvalidInputException;
 import bsc.example.objective.util.ValidationUtil;
 import org.apache.log4j.Logger;
 
@@ -19,15 +20,15 @@ public class InputProcessorServiceImpl implements InputProcessorService {
     private final Logger log = Logger.getLogger(InputProcessorServiceImpl.class);
 
     BankAccountServiceImpl bankAccountService;
-    private final String EXIT_COMMAND = "quit";
-    private final int NORMAL_EXIT = 0;
+    private static final String EXIT_COMMAND = "quit";
+    private static final int NORMAL_EXIT = 0;
 
     public InputProcessorServiceImpl(BankAccountServiceImpl bankAccountService) {
         this.bankAccountService = bankAccountService;
     }
 
     @Override
-    public void processInput(InputStreamReader consoleReader){
+    public void processInput(InputStreamReader consoleReader) throws InvalidInputException {
         try(BufferedReader bufferedConsoleReader = new BufferedReader(consoleReader)){
 
             String line;
@@ -44,13 +45,15 @@ public class InputProcessorServiceImpl implements InputProcessorService {
                 }
             }
         } catch (IOException e) {
-            log.error(e);
+            log.error("Input stream " + consoleReader + " is invalid", e);
+            throw new InvalidInputException("Input stream " + consoleReader + " is invalid", e);
+
         }
 
     }
 
     @Override
-    public void processInput(FileReader fileReader)  {
+    public void processInput(FileReader fileReader) throws InvalidInputException {
         try(BufferedReader bufferedFileReader = new BufferedReader(fileReader)) {
             String line;
 
@@ -58,15 +61,11 @@ public class InputProcessorServiceImpl implements InputProcessorService {
                 if (ValidationUtil.isValid(line)) {
                     processInputLine(line);
                 } else {
-                    throw new IllegalArgumentException("Input file contains invalid data.");
+                    throw new InvalidInputException("The file contains invalid data");
                 }
             }
         } catch (IOException e) {
-            System.out.println("There is a problem. Please, contact the customer service");
-            log.error(e);
-        } catch (IllegalArgumentException e){
-            System.out.println("Input payments file contains invalid data");
-            log.error("Input file contains invalid data", e);
+            throw new InvalidInputException(e);
         }
 
     }
