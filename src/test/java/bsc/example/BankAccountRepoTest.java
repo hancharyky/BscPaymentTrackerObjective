@@ -7,6 +7,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * @author Yahor
+ */
 public class BankAccountRepoTest {
     private AccountRepo accountRepo;
 

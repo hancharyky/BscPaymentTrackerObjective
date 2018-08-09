@@ -1,4 +1,4 @@
-package bsc.example;
+package bsc.example.service;
 
 import bsc.example.objective.model.BankAccount;
 import bsc.example.objective.service.PaymentService;
@@ -10,6 +10,9 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.Currency;
 
+/**
+ * @author Yahor
+ */
 public class PaymentServiceTest {
 
     String currencyCode;
@@ -37,7 +40,6 @@ public class PaymentServiceTest {
         Assert.assertNotNull(paymentService.getPayment(bankAccount, currency));
     }
 
-
     @Test
     public void makePaymentTest(){
         Assert.assertNull(bankAccount.getAccounts().get(currency));
@@ -46,8 +48,6 @@ public class PaymentServiceTest {
         Assert.assertTrue(bankAccount.getAccounts().get(currency).getAmount().equals(amount));
 
     }
-
-
 
 
 }

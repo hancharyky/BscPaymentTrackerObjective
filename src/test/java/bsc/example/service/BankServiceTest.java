@@ -1,4 +1,4 @@
-package bsc.example;
+package bsc.example.service;
 
 import bsc.example.objective.repo.AccountRepo;
 import bsc.example.objective.service.BankAccountServiceImpl;
@@ -9,6 +9,9 @@ import java.math.BigDecimal;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * @author Yahor
+ */
 public class BankServiceTest {
     BankAccountServiceImpl bankAccountService;
 
@@ -19,7 +22,7 @@ public class BankServiceTest {
     }
 
     @Test
-    public void bankSuccessfulPayment(){
+    public void bankService_successfulPayment(){
         assertTrue(bankAccountService.addPayment("USD", new BigDecimal(1000L)));
     }
 

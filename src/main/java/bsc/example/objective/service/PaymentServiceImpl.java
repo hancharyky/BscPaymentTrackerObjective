@@ -1,14 +1,20 @@
 package bsc.example.objective.service;
 
+import bsc.example.objective.main.PaymentTracker;
 import bsc.example.objective.model.BankAccount;
 import bsc.example.objective.model.Payment;
-import bsc.example.objective.repo.AccountRepo;
+import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Map;
 
+
+/**
+ * @author Yahor
+ */
 public class PaymentServiceImpl implements PaymentService {
+    private final static Logger log = Logger.getLogger(PaymentTracker.class);
 
     @Override
     public Map<Currency, Payment> getAll(BankAccount account) {
@@ -31,7 +37,7 @@ public class PaymentServiceImpl implements PaymentService {
             BigDecimal newPaymentAmount = actualPayment.getAmount().add(amount);
 
             if(newPaymentAmount.compareTo(BigDecimal.ZERO) < 0){
-                System.out.println("Exception the payment substracts more than actual money available");
+                System.out.println("Exception the payment substructs more than actual money available");
 
             } else {
                 getAll(account).put(paymentCurrency, new Payment(paymentCurrency, newPaymentAmount));
@@ -42,6 +48,8 @@ public class PaymentServiceImpl implements PaymentService {
             getAll(account).put(paymentCurrency, new Payment(paymentCurrency, amount));
             paymentSuccessful = true;
         }
+
+        log.info(String.format("Payment %s %s succeed: %b", currency, amount.toString(), paymentSuccessful));
 
         return paymentSuccessful;
     }

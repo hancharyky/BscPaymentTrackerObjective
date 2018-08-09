@@ -1,6 +1,6 @@
 package bsc.example.objective.main;
 
-import bsc.example.objective.exception.InvalidInputException;
+import bsc.example.objective.exception.InvalidUserInputException;
 import bsc.example.objective.repo.AccountRepo;
 import bsc.example.objective.service.BankAccountServiceImpl;
 import bsc.example.objective.service.InputProcessorServiceImpl;
@@ -11,29 +11,32 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- *
+ * Start program for payment tracker application.
  *
  * @author Yahor
  */
 public class PaymentTracker {
 
-    final static Logger log = Logger.getLogger(PaymentTracker.class);
+    private final static Logger log = Logger.getLogger(PaymentTracker.class);
+
     AccountRepo accountRepo;
     BankAccountServiceImpl bankAccountService;
     InputProcessorServiceImpl inputProcessorService;
+    ExecutorService executor;
 
-    String filename = "paymentss.txt";
+    String filename = "payments.txt";
 
     public PaymentTracker() {
         this.accountRepo = new AccountRepo();
         this.bankAccountService = new BankAccountServiceImpl(accountRepo);
         this.inputProcessorService =  new InputProcessorServiceImpl(bankAccountService);
+        this.executor = Executors.newCachedThreadPool();
     }
 
     public void init(){
         try {
             inputProcessorService.processInput(new FileReader(filename));
-        } catch (InvalidInputException | FileNotFoundException e) {
+        } catch (InvalidUserInputException | FileNotFoundException e) {
             log.error("File " + filename + " is erroneous or doesn't exist", e);
             System.out.println("There is a problem with input file please contact customer service.");
             System.exit(-1);
@@ -44,14 +47,17 @@ public class PaymentTracker {
                     "If you want to proceed, please, enter payment currency code and amount:");
         try {
             inputProcessorService.processInput(new InputStreamReader(System.in));
-        } catch (InvalidInputException e) {
+        } catch (InvalidUserInputException e) {
             log.error("User input " + System.in + " is erroneous", e);
         }
     }
 
+
+    /**
+     * Method outputs the state of user account one tame at a minute.
+     */
     private void outputAccount(){
-        ExecutorService myExecutor = Executors.newCachedThreadPool();
-        myExecutor.execute(new Runnable() {
+        executor.execute(new Runnable() {
             public void run() {
                 try {
                     while (true) {
@@ -64,5 +70,13 @@ public class PaymentTracker {
             }
         });
     }
+
+    /**
+     *  Method shutdowns all current running executor tasks.
+     */
+    public void shutdownExecutor(){
+        executor.shutdownNow();
+    }
+
 
 }

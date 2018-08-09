@@ -5,8 +5,10 @@ import bsc.example.objective.model.Payment;
 
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.Currency;
 
+/**
+ * @author Yahor
+ */
 public class BankAccountServiceImpl implements BankAccountService{
 
     private AccountRepo accountRepo;

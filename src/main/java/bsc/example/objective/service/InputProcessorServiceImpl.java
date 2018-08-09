@@ -1,7 +1,8 @@
 package bsc.example.objective.service;
 
 
-import bsc.example.objective.exception.InvalidInputException;
+import bsc.example.objective.enums.ConsoleCommands;
+import bsc.example.objective.exception.InvalidUserInputException;
 import bsc.example.objective.util.ValidationUtil;
 import org.apache.log4j.Logger;
 
@@ -20,25 +21,25 @@ public class InputProcessorServiceImpl implements InputProcessorService {
     private final Logger log = Logger.getLogger(InputProcessorServiceImpl.class);
 
     BankAccountServiceImpl bankAccountService;
-    private static final String EXIT_COMMAND = "quit";
-    private static final int NORMAL_EXIT = 0;
 
     public InputProcessorServiceImpl(BankAccountServiceImpl bankAccountService) {
         this.bankAccountService = bankAccountService;
     }
 
     @Override
-    public void processInput(InputStreamReader consoleReader) throws InvalidInputException {
+    public void processInput(InputStreamReader consoleReader) throws InvalidUserInputException {
         try(BufferedReader bufferedConsoleReader = new BufferedReader(consoleReader)){
 
             String line;
 
             while ((line = bufferedConsoleReader.readLine()) != null){
-                if(EXIT_COMMAND.equalsIgnoreCase(line)){
-                    System.exit(NORMAL_EXIT);
+                boolean quit = ConsoleCommands.QUIT.toString().equalsIgnoreCase(line);
+                if(quit){
+                    return;
                 }
 
-                if (ValidationUtil.isValid(line)) {
+                if (ValidationUtil.isInputPaymentValid(line)) {
+                    log.info("Processing user input: " + line);
                     processInputLine(line);
                 } else {
                     System.out.println("Input is invalid, please enter a payment in form \"USD 100.10\"");
@@ -46,26 +47,26 @@ public class InputProcessorServiceImpl implements InputProcessorService {
             }
         } catch (IOException e) {
             log.error("Input stream " + consoleReader + " is invalid", e);
-            throw new InvalidInputException("Input stream " + consoleReader + " is invalid", e);
+            throw new InvalidUserInputException("Input stream " + consoleReader + " is invalid", e);
 
         }
 
     }
 
     @Override
-    public void processInput(FileReader fileReader) throws InvalidInputException {
+    public void processInput(FileReader fileReader) throws InvalidUserInputException {
         try(BufferedReader bufferedFileReader = new BufferedReader(fileReader)) {
             String line;
 
             while ((line = bufferedFileReader.readLine()) != null) {
-                if (ValidationUtil.isValid(line)) {
+                if (ValidationUtil.isInputPaymentValid(line)) {
                     processInputLine(line);
                 } else {
-                    throw new InvalidInputException("The file contains invalid data");
+                    throw new InvalidUserInputException("The file contains invalid data");
                 }
             }
         } catch (IOException e) {
-            throw new InvalidInputException(e);
+            throw new InvalidUserInputException(e);
         }
 
     }
