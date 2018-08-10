@@ -19,10 +19,10 @@ public class PaymentTracker {
 
     private final static Logger log = Logger.getLogger(PaymentTracker.class);
 
-    AccountRepo accountRepo;
-    BankAccountServiceImpl bankAccountService;
-    InputProcessorServiceImpl inputProcessorService;
-    ExecutorService executor;
+    private AccountRepo accountRepo;
+    private BankAccountServiceImpl bankAccountService;
+    private InputProcessorServiceImpl inputProcessorService;
+    private ExecutorService executor;
 
     String filename = "payments.txt";
 
@@ -31,9 +31,10 @@ public class PaymentTracker {
         this.bankAccountService = new BankAccountServiceImpl(accountRepo);
         this.inputProcessorService =  new InputProcessorServiceImpl(bankAccountService);
         this.executor = Executors.newCachedThreadPool();
+        init();
     }
 
-    public void init(){
+    private void init(){
         try {
             inputProcessorService.processInput(new FileReader(filename));
         } catch (InvalidUserInputException | FileNotFoundException e) {
