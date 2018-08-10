@@ -24,7 +24,7 @@ public class PaymentTracker {
     private InputProcessorServiceImpl inputProcessorService;
     private ExecutorService executor;
 
-    String filename = "payments.txt";
+    private String filename = "payments.txt";
 
     public PaymentTracker() {
         this.accountRepo = new AccountRepo();
