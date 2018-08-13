@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.util.regex.Pattern;
 
 /**
  * Process user input and pass it to transact it into bank account.
@@ -20,7 +21,10 @@ import java.math.BigDecimal;
 public class InputProcessorServiceImpl implements InputProcessorService {
     private final Logger log = Logger.getLogger(InputProcessorServiceImpl.class);
 
-    BankAccountServiceImpl bankAccountService;
+    private BankAccountServiceImpl bankAccountService;
+    private final Pattern PAYMENT_REGEX = Pattern.compile("[A-Z]{3}\\s-?\\d{0,15}\\.?\\d{0,15}"); // e.g. USD -100.15 is valid value
+
+
 
     public InputProcessorServiceImpl(BankAccountServiceImpl bankAccountService) {
         this.bankAccountService = bankAccountService;
@@ -38,7 +42,7 @@ public class InputProcessorServiceImpl implements InputProcessorService {
                     return;
                 }
 
-                if (ValidationUtil.isInputPaymentValid(line)) {
+                if (ValidationUtil.isInputPaymentValid(PAYMENT_REGEX, line)) {
                     log.info("Processing user input: " + line);
                     processInputLine(line);
                 } else {
@@ -59,7 +63,7 @@ public class InputProcessorServiceImpl implements InputProcessorService {
             String line;
 
             while ((line = bufferedFileReader.readLine()) != null) {
-                if (ValidationUtil.isInputPaymentValid(line)) {
+                if (ValidationUtil.isInputPaymentValid(PAYMENT_REGEX, line)) {
                     processInputLine(line);
                 } else {
                     throw new InvalidUserInputException("The file contains invalid data");

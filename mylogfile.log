@@ -1,0 +1,16 @@
+2018-08-13 16:23:59 INFO  PaymentTracker: 52- Payment USD 1000 succeed: true
+  2018-08-13 16:23:59 INFO  Payment USD 1000 succeed: true
+2018-08-13 16:23:59 INFO  PaymentTracker: 52- Payment CZK 24500 succeed: true
+  2018-08-13 16:23:59 INFO  Payment CZK 24500 succeed: true
+2018-08-13 16:24:34 INFO  InputProcessorServiceImpl: 42- Processing user input: USD 100.00
+  2018-08-13 16:24:34 INFO  Processing user input: USD 100.00
+2018-08-13 16:24:34 INFO  PaymentTracker: 52- Payment USD 100.00 succeed: true
+  2018-08-13 16:24:34 INFO  Payment USD 100.00 succeed: true
+2018-08-13 16:32:04 INFO  PaymentTracker: 52- Payment USD 1000 succeed: true
+  2018-08-13 16:32:04 INFO  Payment USD 1000 succeed: true
+2018-08-13 16:32:04 INFO  PaymentTracker: 52- Payment CZK 24500 succeed: true
+  2018-08-13 16:32:04 INFO  Payment CZK 24500 succeed: true
+2018-08-13 16:32:26 INFO  PaymentTracker: 52- Payment USD 1000 succeed: true
+  2018-08-13 16:32:26 INFO  Payment USD 1000 succeed: true
+2018-08-13 16:32:26 INFO  PaymentTracker: 52- Payment CZK 24500 succeed: true
+  2018-08-13 16:32:26 INFO  Payment CZK 24500 succeed: true
